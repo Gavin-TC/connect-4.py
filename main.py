@@ -15,6 +15,7 @@ ai_piece = ""
 current_turn = ""
 
 game_running = True
+can_drop = True
 
 
 def main():
@@ -25,7 +26,8 @@ def main():
         os.system("PAUSE")
 
         if current_turn == player_piece:
-            pass
+            spot = input("1-7: ")
+            drop_piece(spot, player_piece)
         if current_turn == ai_piece:
             ai_plays()
 
@@ -33,8 +35,17 @@ def ai_plays():
     pass
 
 def drop_piece(spot, piece):
-    #todo - drop a PIECE at the SPOT
-    pass
+    #todo - whilst dropping, check if piece below spot is empty (i.e., no pieces below)
+    os.system("CLS")
+
+    while spot < 1 or spot > 7:
+        os.system("CLS)")
+        spot = input("Invalid location. 1-7: ")
+    else: pass
+
+    spot -= 1
+    if grid[spot][0] == "-":
+        print("true")
 
 def check_win():
     global board
